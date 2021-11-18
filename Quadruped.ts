@@ -179,6 +179,8 @@ namespace Quadruped {
     //% blockId=Quadruped_Control_s block="Control direction| %m|speed %speed1|time %time1"
     export function Control_s(m: Mov_dir, speed1: number, time1: number): void {
         let Sum_S = 0.00
+        let time_ms = 0
+        let time_s = time1*1000
         Sum_S = speed1 / 100.00
         SPI_Send()
         switch (m) {
@@ -195,9 +197,15 @@ namespace Quadruped {
             case Mov_dir.Shift_r:
                 rc_spd_cmd_y = Sum_S; SPI_Send(); break;
         }
-        for (let e = 0; e < time1; e++) {
+        //for (let e = 0; e < time1; e++) {
+        //    SPI_Send()
+        //    basic.pause(1000)
+        //}
+        whiel(1){
+            time_ms = input.runningTime()
             SPI_Send()
-            basic.pause(1000)
+            if(time_s == time_ms)
+                return
         }
     }
     //###Control angle||控制角度
