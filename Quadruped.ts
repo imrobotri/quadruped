@@ -181,6 +181,7 @@ namespace Quadruped {
         let Sum_S = 0.00
         let time_ms = 0
         let time_s = time1*1000
+        let time_start = 0
         Sum_S = speed1 / 100.00
         SPI_Send()
         switch (m) {
@@ -201,10 +202,11 @@ namespace Quadruped {
         //    SPI_Send()
         //    basic.pause(1000)
         //}
+        time_start = input.runningTime()
         while(1){
-            time_ms = input.runningTime()
+            time_ms = input.runningTime() - time_start
             SPI_Send()
-            if(time_s == time_ms)
+            if(time_s <= time_ms)
                 return
         }
     }
