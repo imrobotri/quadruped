@@ -197,7 +197,7 @@ namespace Quadruped {
         }
         for (let e = 0; e < time1; e++) {
             SPI_Send()
-            //basic.pause(50)
+            basic.pause(1000)
         }
     }
     //###Control angle||控制角度
@@ -236,7 +236,7 @@ namespace Quadruped {
         }
         for (let e = 0; e < time1; e++) {
             SPI_Send()
-            //basic.pause(50)
+            basic.pause(1000)
         }
     }
 
