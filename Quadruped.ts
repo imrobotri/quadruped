@@ -201,7 +201,7 @@ namespace Quadruped {
         //    SPI_Send()
         //    basic.pause(1000)
         //}
-        whiel(1){
+        while(1){
             time_ms = input.runningTime()
             SPI_Send()
             if(time_s == time_ms)
