@@ -220,6 +220,9 @@ namespace Quadruped {
     //% time1.min=0 time1.max=255
     //% blockId=Quadruped_Control_a block="Control angle |%m|angle_size %angle1|time %time1"
     export function Control_a(m: Mov_ang, angle1: number, time1: number): void {
+        let time_ms = 0
+        let time_s = time1*1000
+        let time_start = 0
         switch (m) {
             case Mov_ang.Look_d:
                 rc_att_cmd_x = angle1; break;
@@ -244,10 +247,18 @@ namespace Quadruped {
             case Mov_ang.Yaw_r:
                 rc_att_cmd = -(angle1); break;
         }
-        for (let e = 0; e < time1; e++) {
+        //for (let e = 0; e < time1; e++) {
+        //    SPI_Send()
+        //    basic.pause(1000)
+        //}
+        time_start = input.runningTime()
+        while(1){
+            time_ms = input.runningTime() - time_start
             SPI_Send()
-            basic.pause(1000)
+            if(time_s <= time_ms)
+                return
         }
+        
     }
 
     //###Joint angle control||关节控制
