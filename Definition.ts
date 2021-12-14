@@ -58,6 +58,9 @@ let Identify_TX = pins.createBuffer(10)
 let Identify_RX = pins.createBuffer(50)
 let cnt_p = 0
 
+//测试
+let TestTX = pins.createBuffer(3)
+
 //QR code
 let Identify_x = 0x00, Identify_y = 0x00, Identify_z = 0x00
 let Identify_Flip_x = 0x00, Identify_Flip_y = 0x00, Identify_Flip_z = 0x00
@@ -253,6 +256,15 @@ function Joint_data() {
 
     ToSlaveBuf[SSLen - 1] = DaTail_2;
 }
+
+//测试
+ function Test(){
+        TestTX[0] = 0xAA
+        TestTX[1] = 0xBB
+        TestTX[2] = 0xCC
+        serial.writBuffer(TestTX)
+        basic.pause(10)
+ }
 
 //Data sending（Image Identification）||数据发送（图像识别）
 function Identify_send() {
