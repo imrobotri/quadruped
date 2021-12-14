@@ -516,14 +516,7 @@ namespace Quadruped {
      //% blockGap=8
      //% blockId=sensor_Voicen block="图像识别测试"
      export function Voice(): void {
-        let TestTX = pins.createBuffer(3) 
-        TestTX[0] = 0xAA
-        TestTX[1] = 0xBB
-        TestTX[2] = 0xCC
-         serial.writBuffer(TestTX)
-         basic.pause(10)
-         
-         
+        Test()
      }
 
     // //###Voice recognition turned on||语音识别开启
