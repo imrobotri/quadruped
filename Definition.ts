@@ -262,7 +262,7 @@ function Joint_data() {
         TestTX[0] = 0xAA
         TestTX[1] = 0xBB
         TestTX[2] = 0xCC
-        serial.writBuffer(TestTX)
+        serial.writeBuffer(TestTX)
         basic.pause(10)
  }
 
