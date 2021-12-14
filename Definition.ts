@@ -130,7 +130,7 @@ let voice_speed = 7 //speed
 //########SPI_int||SPI初始化
 function SPI_Init() {
     pins.digitalWritePin(DigitalPin.P16, 1)
-    pins.digitalWritePin(DigitalPin.P6, 1)
+    pins.digitalWritePin(DigitalPin.P12, 1)
     pins.spiPins(DigitalPin.P15, DigitalPin.P14, DigitalPin.P13)
     pins.spiFrequency(1000000)
     led.enable(false)
@@ -142,12 +142,12 @@ function SPI_Send() {
     if (state == 1) {
         SPICom_Walk()
         pins.digitalWritePin(DigitalPin.P16, 0)
-        pins.digitalWritePin(DigitalPin.P6, 0)
+        pins.digitalWritePin(DigitalPin.P12, 0)
         for (let i = 0; i < 200; i++);
         for (let i = 0; i < SSLen; i++) {
             InfoTemp[i] = pins.spiWrite(ToSlaveBuf[i])
         }
-        pins.digitalWritePin(DigitalPin.P6, 1)
+        pins.digitalWritePin(DigitalPin.P12, 1)
         pins.digitalWritePin(DigitalPin.P16, 1)
         //serial.writeBuffer(InfoTemp)
         //serial.writeBuffer(ToSlaveBuf)
@@ -203,13 +203,13 @@ function Standing() {
 //########Servo SPI data transmission||舵机SPI 数据发送
 function SG_SPI_Send() {
     pins.digitalWritePin(DigitalPin.P16, 0)
-    pins.digitalWritePin(DigitalPin.P6, 0)
+    pins.digitalWritePin(DigitalPin.P12, 0)
     for (let i = 0; i < 200; i++);
     for (let i = 0; i < SSLen; i++) {
         InfoTemp_1[i] = pins.spiWrite(ToSlaveBuf_1[i])
     }
     //serial.writeBuffer(ToSlaveBuf_1)
-    pins.digitalWritePin(DigitalPin.P6, 1)
+    pins.digitalWritePin(DigitalPin.P12, 1)
     pins.digitalWritePin(DigitalPin.P16, 1)
     basic.pause(1)
 }
@@ -219,12 +219,12 @@ function Joint_SPI_Send() {
 
     Joint_data()
     pins.digitalWritePin(DigitalPin.P16, 0)
-    pins.digitalWritePin(DigitalPin.P6, 0)
+    pins.digitalWritePin(DigitalPin.P12, 0)
     for (let i = 0; i < 200; i++);
     for (let i = 0; i < SSLen; i++) {
         InfoTemp_2[i] = pins.spiWrite(ToSlaveBuf[i])
     }
-    pins.digitalWritePin(DigitalPin.P6, 1)
+    pins.digitalWritePin(DigitalPin.P12, 1)
     pins.digitalWritePin(DigitalPin.P16, 1)
     //SPI_unpacking()
     basic.pause(1)
