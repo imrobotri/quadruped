@@ -178,6 +178,17 @@ enum ColorID {
     //% block="Blue"
     Blue = 4,    
 }
+//识别形状ID
+enum ShapeID { 
+    //% block="none"
+    None = 0,
+    //% block="Triangle"
+    Triangle = 1,
+    //% block="Rectangle"
+    Rectangle = 2,  
+    //% block="Round"
+    Round = 3, 
+}
 
 //Joint settings||关节设置
 enum sIte {

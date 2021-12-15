@@ -439,14 +439,14 @@ namespace Quadruped {
         serial.setRxBufferSize(32)
     }
 
-    //###QR code position return value||二维码位置返回值
+    //###Tag code position return value||二维码位置返回值
     /**
-    * IODO: returns the value of the QR code set, and the X, y, Z, XYZ axes are flipped (corresponding position and flipping angle)
+    * IODO: returns the value of the Tag code set, and the X, y, Z, XYZ axes are flipped (corresponding position and flipping angle)
     */
     //% subcategory=sensor
     //% blockGap=8
-    //% blockId=sensor_QR_return block="QR code position return value| %data"
-    export function QR_return(data: Position): number {
+    //% blockId=sensor_Tag_return block="Tag code position return value| %data"
+    export function Tag_return(data: Position): number {
         Function_c = 0x04
         Function_s = 1
         Identify_send()
@@ -514,7 +514,7 @@ namespace Quadruped {
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=Recognition_settings block="Identify| %Fun|Color %Col"
+     //% blockId=RecognitionOn block="Identify| %Fun|Color %Col"
      export function RecognitionOn(Fun:  FunctionID,Col :ColorID): void {
         FunID = Fun
         ColID = Col
@@ -522,9 +522,22 @@ namespace Quadruped {
         // IRecognitionSettings(Fun, Col)//发送设置数据
      }
 
+	//inePatrolColorBlock 巡线色块
+    /**
+     * IODO:Voice recognition turned on
+     */
+     //% subcategory=sensor
+     //% blockGap=8
+     //% blockId=LinePatrolColorBlock block="Line inspection| %Sha|Color %Col"
+     export function LinePatrolColorBlock(Sha:  ShapeID,Col :ColorID): void {
+        ShaID = Sha
+        ColID = Col
+        IRecognitionSettings() 
+        // IRecognitionSettings(Fun, Col)//发送设置数据
+     }
 
 
-
+    
 
 
 }

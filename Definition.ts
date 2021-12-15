@@ -62,8 +62,8 @@ let cnt_p = 0
 let TestTX = pins.createBuffer(7)
 let FunID = 0x00
 let ColID = 0x00
-let ShapeID = 0x00
-let ShapeColID = 0x00
+let ShaID = 0x00
+let ShaColID = 0x00
 
 //QR code
 let Identify_x = 0x00, Identify_y = 0x00, Identify_z = 0x00
@@ -270,8 +270,8 @@ function IRecognitionSettings() {
     TestTX[cnt++] = 0x00
     TestTX[cnt++] = FunID
     TestTX[cnt++] = ColID
-    TestTX[cnt++] = ShapeID
-    TestTX[cnt++] = ShapeColID
+    TestTX[cnt++] = ShaID
+    TestTX[cnt++] = ShaColID
     TestTX[1] = cnt - 2
     for (i; i < cnt;i++) { 
         sum = sum + TestTX[i]
