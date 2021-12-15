@@ -58,8 +58,12 @@ let Identify_TX = pins.createBuffer(10)
 let Identify_RX = pins.createBuffer(50)
 let cnt_p = 0
 
-//测试
-let TestTX = pins.createBuffer(3)
+//识别设置
+let TestTX = pins.createBuffer(7)
+let FunID = 0x00
+let ColID = 0x00
+let ShapeID = 0x00
+let ShapeColID = 0x00
 
 //QR code
 let Identify_x = 0x00, Identify_y = 0x00, Identify_z = 0x00
@@ -257,13 +261,24 @@ function Joint_data() {
     ToSlaveBuf[SSLen - 1] = DaTail_2;
 }
 
-//识别功能、颜色开启
- function IRecognitionSettings(FunID:number,ColID:number){
-        TestTX[0] = 0xAA
-        TestTX[1] = FunID
-        TestTX[2] = ColID
-        serial.writeBuffer(TestTX)
-        basic.pause(10)
+//识别功能、颜色开、形状、形状颜色开启
+function IRecognitionSettings() {
+    let cnt = 0
+    let i = 0
+    let sum = 0x00
+    TestTX[cnt++] = 0xAA
+    TestTX[cnt++] = 0x00
+    TestTX[cnt++] = FunID
+    TestTX[cnt++] = ColID
+    TestTX[cnt++] = ShapeID
+    TestTX[cnt++] = ShapeColID
+    TestTX[1] = cnt - 2
+    for (i; i < cnt;i++) { 
+        sum = sum + TestTX[i]
+    }
+    TestTX[cnt] = sum
+    serial.writeBuffer(TestTX)
+    basic.pause(10)
  }
 
 //Data sending（Image Identification）||数据发送（图像识别）

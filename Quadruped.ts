@@ -516,7 +516,10 @@ namespace Quadruped {
      //% blockGap=8
      //% blockId=Recognition_settings block="Identify| %Fun|Color %Col"
      export function RecognitionOn(Fun:  FunctionID,Col :ColorID): void {
-         IRecognitionSettings(Fun,Col)//发送设置数据
+        FunID = Fun
+        ColID = Col
+        IRecognitionSettings() 
+        // IRecognitionSettings(Fun, Col)//发送设置数据
      }
 
 
