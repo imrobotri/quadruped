@@ -153,6 +153,30 @@ enum enColor {
     Yellow,
 }
 
+//识别功能ID
+enum FunctionID {
+    //% block="Tag label"
+    Tag = 1,
+    //% block="Seek ball"
+    ball = 2,
+    //% block="Line inspection"
+    Line = 3,
+    //% block="QR"
+    QR = 4    
+}
+
+//识别颜色ID
+enum ColorID { 
+    //% block="Red"
+    Red = 1, 
+    //% block="Green"
+    Green = 2,
+    //% block="Black"
+    Black = 3,
+    //% block="Blue"
+    Blue = 4,    
+}
+
 //Joint settings||关节设置
 enum sIte {
     //%  block="set up"

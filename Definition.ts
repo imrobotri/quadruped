@@ -257,11 +257,11 @@ function Joint_data() {
     ToSlaveBuf[SSLen - 1] = DaTail_2;
 }
 
-//测试
- function Test(){
+//识别功能、颜色开启
+ function IRecognitionSettings(FunID:number,ColID:number){
         TestTX[0] = 0xAA
-        TestTX[1] = 0xBB
-        TestTX[2] = 0xCC
+        TestTX[1] = FunID
+        TestTX[2] = ColID
         serial.writeBuffer(TestTX)
         basic.pause(10)
  }

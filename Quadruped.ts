@@ -508,28 +508,18 @@ namespace Quadruped {
 
     }
 
-
-     /**
+	//RecognitionOn 识别设置
+    /**
      * IODO:Voice recognition turned on
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=sensor_Voicen block="图像识别测试"
-     export function Voice(): void {
-        Test()
+     //% blockId=Recognition_settings block="Identify| %Fun|Color %Col"
+     export function RecognitionOn(Fun:  FunctionID,Col :ColorID): void {
+         IRecognitionSettings(Fun,Col)//发送设置数据
      }
 
-    // //###Voice recognition turned on||语音识别开启
-    // /**
-    // * IODO:Voice recognition turned on
-    // */
-    // //% subcategory=sensor
-    // //% blockGap=8
-    // //% blockId=sensor_Voicen block="Voice recognition turned on"
-    // export function Voice(): void {
-    //     voice_rx()
-    //     voice_data()
-    // }
+
 
 
 
