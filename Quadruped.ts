@@ -528,7 +528,7 @@ namespace Quadruped {
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=LinePatrolColorBlock block="Line inspection| %Sha|Color %Col"
+     //% blockId=LinePatrolColorBlock block="Line inspection and identification| %Sha|Color %Col"
      export function LinePatrolColorBlock(Sha:  ShapeID,Col :ColorID): void {
         ShaID = Sha
         ColID = Col
