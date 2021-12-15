@@ -95,7 +95,7 @@
     "ColorID.None|block": "无",
     "ShapeID.None|block": "无",
     "ShapeID.Triangle|block": "三角形",
-    "ShapeID.ectangle|block": "矩形",
+    "ShapeID.Rectangle|block": "矩形",
     "ShapeID.Round|block": "圆形"
 
 
