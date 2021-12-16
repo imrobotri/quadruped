@@ -27,6 +27,7 @@
     "Quadruped.Line_return|block": "巡线返回 | %X",
     "Quadruped.RecognitionOn|block": "识别 | %Fun|颜色 %Col",
     "Quadruped.LinePatrolColorBlock|block": "巡线并识别| %Sha|颜色 %Col",
+    "Quadruped.RecognitionReset|block": "识别复位",
     "Quadruped.Joint | block ": "关节角度 | % j | 大腿 % d | 小腿 % x | 侧腿 % c | % s ",
     "Quadruped.Joint_Heartbeat|block": "关节心跳",
     "gait.Trot|block": "小跑",
