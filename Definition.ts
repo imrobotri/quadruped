@@ -64,6 +64,7 @@ let FunID = 0x00
 let ColID = 0x00
 let ShaID = 0x00
 let ShaColID = 0x00
+let FrameHeader = 0x00
 
 //QR code
 let Identify_x = 0x00, Identify_y = 0x00, Identify_z = 0x00
@@ -266,7 +267,7 @@ function IRecognitionSettings() {
     let cnt = 0
     let i = 0
     let sum = 0x00
-    TestTX[cnt++] = 0xAA
+    TestTX[cnt++] = FrameHeader
     TestTX[cnt++] = 0x00
     TestTX[cnt++] = FunID
     TestTX[cnt++] = ColID

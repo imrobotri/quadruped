@@ -516,6 +516,7 @@ namespace Quadruped {
      //% blockGap=8
      //% blockId=RecognitionOn block="Identify| %Fun|Color %Col"
      export function RecognitionOn(Fun:  FunctionID,Col :ColorID): void {
+        FrameHeader = 0xAA
         FunID = Fun
         ColID = Col
         IRecognitionSettings() 
@@ -529,14 +530,30 @@ namespace Quadruped {
      //% subcategory=sensor
      //% blockGap=8
      //% blockId=LinePatrolColorBlock block="Line inspection and identification| %Sha|Color %Col"
-     export function LinePatrolColorBlock(Sha:  ShapeID,Col :ColorID): void {
+    export function LinePatrolColorBlock(Sha: ShapeID, Col: ColorID): void {
+        FrameHeader = 0xAA
         ShaID = Sha
         ColID = Col
         IRecognitionSettings() 
         // IRecognitionSettings(Fun, Col)//发送设置数据
      }
 
-
+	//RecognitionReset 识别复位
+    /**
+     * IODO:Voice recognition turned on
+     */
+     //% subcategory=sensor
+     //% blockGap=8
+     //% blockId=RecognitionReset block="RecognitionReset"
+     export function RecognitionReset(): void {
+        FrameHeader = 0xBB
+        FunID = 0X00
+        ColID = 0X00        
+        ShaID = 0X00
+        ColID = 0X00
+        IRecognitionSettings() 
+        // IRecognitionSettings(Fun, Col)//发送设置数据
+     }
     
 
 
