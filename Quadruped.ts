@@ -566,7 +566,7 @@ namespace Quadruped {
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=OnToggle block="OnToggle"
+     //% blockId=OnToggle block="OnToggle|%Fun"
     export function OnToggle(Fun:  FunctionID): void { 
         IRecognitionToggle()    //复位
         FrameHeader = 0xAA
@@ -581,7 +581,7 @@ namespace Quadruped {
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=FunctionSettings block="FunctionSettings"
+     //% blockId=FunctionSettings block="FunctionSettingsy| %Col|%Fun"
      export function FunctionSettings(Col: ColorID,Fun:  FunctionID): void { 
         IRecognitionToggle()
         FrameHeader = 0xAA
