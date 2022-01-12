@@ -428,31 +428,6 @@ namespace Quadruped {
         SG_SPI_Send()
     }
 
-
-
-
-
-    //###Line patrol return||巡线返回
-    /**
-    * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
-    */
-    //% subcategory=sensor
-    //% blockGap=8
-    //% blockId=sensor_Line_return block="Line patrol return value| %x"
-    export function Line_return(X: Line_Position): number {
-        Function_c = 0x40
-        Function_s = 3
-        Identify_send()
-        Identify_receive()
-        switch (X) {
-            case Line_Position.status: return Line_detect;
-            case Line_Position.Re_effect: return Line_effect;
-            case Line_Position.De_angle: return Line_angle;
-            case Line_Position.De_position: return Line_position;
-            default: return 255
-        }
-    }
-
 	//RecognitionOn 识别设置
     /**
      * IODO:Voice recognition turned on
@@ -595,7 +570,26 @@ namespace Quadruped {
 
     }
 
-
+    //###Line patrol return||巡线返回
+    /**
+    * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
+    */
+    //% subcategory=sensor
+    //% blockGap=8
+    //% blockId=sensor_Line_return block="Line patrol return value| %x"
+    export function Line_return(X: Line_Position): number {
+        Function_c = 0x25
+        Function_s = 4
+        Identify_send()
+        Identify_receive()
+        switch (X) {
+            case Line_Position.status: return Line_detect;
+            case Line_Position.Re_effect: return Line_effect;
+            case Line_Position.De_angle: return Line_angle;
+            case Line_Position.De_position: return Line_position;
+            default: return 255
+        }
+    }
 
 
 

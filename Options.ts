@@ -173,8 +173,6 @@ enum FunctionID1 {
 
 //识别颜色ID
 enum ColorID { 
-    //% block="none"
-    None = 0,
     //% block="Red"
     Red = 1, 
     //% block="Green"
