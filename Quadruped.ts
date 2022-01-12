@@ -428,16 +428,7 @@ namespace Quadruped {
         SG_SPI_Send()
     }
 
-    //###Image recognition initialization||图像识别初始化
-    /**
-    * IODO:Image recognition internal related pins and initialization of settings
-    */
-    //% subcategory=sensor
-    //% blockGap=8
-    //% blockId=sensor_Image_ini block="Image recognition initialization"
-    export function Image_init() {
-        serial.setRxBufferSize(32)
-    }
+
 
     //###Tag code position return value||二维码位置返回值
     /**
@@ -553,7 +544,53 @@ namespace Quadruped {
         ColID = 0X00
         IRecognitionSettings() 
         // IRecognitionSettings(Fun, Col)//发送设置数据
-     }
+    }
+    
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //###Image recognition initialization||图像识别初始化
+    /**
+    * IODO:Image recognition internal related pins and initialization of settings
+    */
+    //% subcategory=sensor
+    //% blockGap=8
+    //% blockId=sensor_Image_ini block="Image recognition initialization"
+    export function Image_init() {
+        serial.setRxBufferSize(32)
+    }
+
+	//OnToggleIdentify 开启/切换(颜色、标签、二维码)
+    /**
+     * IODO:Voice recognition turned on
+     */
+     //% subcategory=sensor
+     //% blockGap=8
+     //% blockId=OnToggle block="OnToggle"
+    export function OnToggle(Fun:  FunctionID): void { 
+        IRecognitionToggle()    //复位
+        FrameHeader = 0xAA
+        DataID = 0x03
+        FunID = Fun
+        IRecognitionSettings()
+    }
+
+	//FunctionSettings 开启/切换(小球、形状、巡线)
+    /**
+     * IODO:Voice recognition turned on
+     */
+     //% subcategory=sensor
+     //% blockGap=8
+     //% blockId=FunctionSettings block="FunctionSettings"
+     export function FunctionSettings(Col: ColorID,Fun:  FunctionID): void { 
+        IRecognitionToggle()
+        FrameHeader = 0xAA
+        DataID = 0x01
+        ColID = Col
+        FunID = Fun
+        IRecognitionSettings()
+    }    
+
     
 
 
