@@ -304,7 +304,7 @@ function IRecognitionSettings() {
     else if (DataID  == 0x03) { 
         TestTX[cnt++] = FunID           //功能ID
     }  
-    TestTX[1] = cnt - 2                 //计算数据长度 
+    TestTX[2] = cnt - 2                 //计算数据长度 
      for (i; i < cnt;i++) {
          sum = sum + TestTX[i]
     } 
