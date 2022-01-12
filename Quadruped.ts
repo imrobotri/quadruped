@@ -453,30 +453,6 @@ namespace Quadruped {
         }
     }
 
-    //###Ball return value||小球返回值
-    /**
-    * IODO:returns the return information of the graphic small ball, the recognition status (returns 1 and 0, 1 means recognized, 0 means unrecognized), the X and Y axis position of the ball center in the image, the two-dimensional width and height of the small ball, and the recognition effect (the higher the recognition effect, the distance of the small ball).Return value (float)
-    */
-    //% subcategory=sensor
-    //% blockGap=8
-    //% blockId=sensor_Ball_return block="Ball returnvalue| %P"
-    export function Ball_return(P: Ball_Position): number {
-        Function_c = 0x24
-        Function_s = 2
-        Identify_send()
-        Identify_receive()
-        switch (P) {
-            case Ball_Position.status: return Ball_status
-            case Ball_Position.X_axis: return Ball_X
-            case Ball_Position.Y_axis: return Ball_Y
-            case Ball_Position.Width: return Ball_W
-            case Ball_Position.Depth: return Ball_H
-            case Ball_Position.Re_effect: return Ball_pixels
-            default: return 255
-        }
-
-    }
-
 	//RecognitionOn 识别设置
     /**
      * IODO:Voice recognition turned on
@@ -559,8 +535,8 @@ namespace Quadruped {
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=FunctionSettings block="FunctionSettingsy| %Col|%Fun"
-     export function FunctionSettings(Col: ColorID,Fun:  FunctionID): void { 
+     //% blockId=OnToggle1 block="OnToggle1| %Col|%Fun"
+     export function OnToggle1(Col: ColorID,Fun:  FunctionID1): void { 
         IRecognitionToggle()
         FrameHeader = 0xAA
         DataID = 0x01
@@ -591,7 +567,36 @@ namespace Quadruped {
             case Position.Z_flip: return Identify_x; break;
             default: return 255
         }
-    }    
+    }
+    
+
+
+    //###Ball return value||小球返回值
+    /**
+    * IODO:returns the return information of the graphic small ball, the recognition status (returns 1 and 0, 1 means recognized, 0 means unrecognized), the X and Y axis position of the ball center in the image, the two-dimensional width and height of the small ball, and the recognition effect (the higher the recognition effect, the distance of the small ball).Return value (float)
+    */
+    //% subcategory=sensor
+    //% blockGap=8
+    //% blockId=sensor_Ball_return block="Ball returnvalue| %P"
+    export function Ball_return(P: Ball_Position): number {
+        Function_c = 0x0F
+        Function_s = 3
+        Identify_send()
+        Identify_receive()
+        switch (P) {
+            case Ball_Position.status: return Ball_status
+            case Ball_Position.X_axis: return Ball_X
+            case Ball_Position.Y_axis: return Ball_Y
+            case Ball_Position.Width: return Ball_W
+            case Ball_Position.Depth: return Ball_H
+            case Ball_Position.Re_effect: return Ball_pixels
+            default: return 255
+        }
+
+    }
+
+
+
 
 
 }

@@ -333,7 +333,7 @@ function Identify_send() {
     Identify_TX[cnt_p++] = 0x00
     Identify_TX[cnt_p++] = Function_c
     Identify_TX[cnt_p++] = 0x00
-    Identify_TX[cnt_p++] = 0x08
+    Identify_TX[cnt_p++] = 0x0A
     usMBCRC16(Identify_TX, cnt_p)
     // serial.writeBuffer(Identify_TX)
     Identify_TX[cnt_p++] = CRC_tx_H

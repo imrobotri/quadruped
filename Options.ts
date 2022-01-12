@@ -158,13 +158,15 @@ enum FunctionID {
     ////% block="color label"
     color = 1,
     //% block="Tag label"
-    Tag = 2,
+    Tag = 2,   
+}
+
+//识别功能ID
+enum FunctionID1 {
     //% block="Seek ball"
     ball = 3,
     //% block="Line inspection"
-    Line = 4,
-    //% block="QR"
-    QR = 5    
+    Line = 4, 
 }
 
 
