@@ -304,7 +304,7 @@ function IRecognitionSettings() {
     else if (DataID  == 0x03) { 
         TestTX[cnt++] = FunID           //功能ID
     }  
-    TestTX[2] = cnt - 2                 //计算数据长度 
+    TestTX[2] = cnt - 3                 //计算数据长度 
      for (i; i < cnt;i++) {
          sum = sum + TestTX[i]
     } 
@@ -348,20 +348,16 @@ function Identify_receive() {
     let position_r = 0
     let sum_r = 0x00
     let length_r = 0
-    //let CRC_L = 0x00
     Identify_RX = serial.readBuffer(0)
-    //serial.writeBuffer(Identify_RX)
-    //basic.showNumber(Identify_RX[1])
     if (Identify_RX[0] == 0x01 && Identify_RX[1] < 0xFF) {
-        //basic.showNumber(1)
         length_r = Identify_RX[2]
-        //serial.writeNumber(length_r)
         usMBCRC16(Identify_RX, length_r + 3)
         if (Identify_RX[length_r + 3] == CRC_H && Identify_RX[length_r + 4] == CRC_L) {
             switch (Function_s) {
-                case 1: Identify_collection(Identify_RX); break;
-                case 2: Ball_rd(Identify_RX); break;
-                case 3: Line_inspection(Identify_RX); break;
+                case 1: break;
+                case 2: Identify_collection(Identify_RX); break;
+                case 3: Ball_rd(Identify_RX); break;
+                case 4: Line_inspection(Identify_RX); break;
                 default: return
             }
         }
@@ -369,7 +365,7 @@ function Identify_receive() {
     return
 }
 
-//QR code data acquisition||二维码数据采集
+//QR code data acquisition||标签数据采集
 function Identify_collection(Identify_RX_1: any) {
     //serial.writeBuffer(Identify_RX_1)
     let Identify_RX_2 = pins.createBuffer(50)

@@ -155,15 +155,19 @@ enum enColor {
 
 //识别功能ID
 enum FunctionID {
+    ////% block="color label"
+    color = 1,
     //% block="Tag label"
-    Tag = 1,
+    Tag = 2,
     //% block="Seek ball"
-    ball = 2,
+    ball = 3,
     //% block="Line inspection"
-    Line = 3,
+    Line = 4,
     //% block="QR"
-    QR = 4    
+    QR = 5    
 }
+
+
 
 //识别颜色ID
 enum ColorID { 

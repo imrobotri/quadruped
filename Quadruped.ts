@@ -430,29 +430,7 @@ namespace Quadruped {
 
 
 
-    //###Tag code position return value||二维码位置返回值
-    /**
-    * IODO: returns the value of the Tag code set, and the X, y, Z, XYZ axes are flipped (corresponding position and flipping angle)
-    */
-    //% subcategory=sensor
-    //% blockGap=8
-    //% blockId=sensor_Tag_return block="Tag code position return value| %data"
-    export function Tag_return(data: Position): number {
-        Function_c = 0x04
-        Function_s = 1
-        Identify_send()
-        Identify_receive()
-        switch (data) {
-            case Position.Content_V: return Identify_pattern; break;
-            case Position.X_axis: return Identify_x; break;
-            case Position.Y_axis: return Identify_x; break;
-            case Position.Z_axis: return Identify_x; break;
-            case Position.X_flip: return Identify_x; break;
-            case Position.Y_flip: return Identify_x; break;
-            case Position.Z_flip: return Identify_x; break;
-            default: return 255
-        }
-    }
+
 
     //###Line patrol return||巡线返回
     /**
@@ -591,7 +569,29 @@ namespace Quadruped {
         IRecognitionSettings()
     }    
 
-    
+    //###Tag code position return value||标签位置返回值
+    /**
+    * IODO: returns the value of the Tag code set, and the X, y, Z, XYZ axes are flipped (corresponding position and flipping angle)
+    */
+    //% subcategory=sensor
+    //% blockGap=8
+    //% blockId=sensor_Tag_return block="Tag code position return value| %data"
+    export function Tag_return(data: Position): number {
+        Function_c = 0x19
+        Function_s = 2
+        Identify_send()
+        Identify_receive()
+        switch (data) {
+            case Position.Content_V: return Identify_pattern; break;
+            case Position.X_axis: return Identify_x; break;
+            case Position.Y_axis: return Identify_x; break;
+            case Position.Z_axis: return Identify_x; break;
+            case Position.X_flip: return Identify_x; break;
+            case Position.Y_flip: return Identify_x; break;
+            case Position.Z_flip: return Identify_x; break;
+            default: return 255
+        }
+    }    
 
 
 }
