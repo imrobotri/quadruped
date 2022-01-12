@@ -316,7 +316,10 @@ function IRecognitionSettings() {
 // 功能切换
 function IRecognitionToggle() {
     let RXSS = 0X00
-    TestTX[0] = 0xBB                   //帧头
+    let cnt = 0
+    TestTX[cnt++] = 0xBB                   //帧头
+    for (let i = 1; i < 7; i++)
+        TestTX[cnt++] = 0x00 
     serial.writeBuffer(TestTX)
     basic.pause(100)
 } 
