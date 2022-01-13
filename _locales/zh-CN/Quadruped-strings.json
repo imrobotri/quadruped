@@ -31,7 +31,7 @@
     "Quadruped.OnToggle|block": "开启/切换|%Fun|识别功能",
     "Quadruped.OnToggle1|block": "开启/切换| %Col|%Fun|识别功能",
     "Quadruped.Joint_Heartbeat|block": "关节心跳",
-    "Quadruped.Joint|block": "关节角度|%j|大腿|%d|小腿|%x|侧腿|%c|%s",
+    "Quadruped.Joint|block": "关节角度 | %j|大腿 %d|小腿 %x|侧腿 %c| %s",
     "gait.Crawl|block": "爬行",
     "obstacle_t.Obstacle|block": "障碍",
     "obstacle_t.No_Obstacle|block": "无障碍",
