@@ -504,7 +504,7 @@ namespace Quadruped {
         IRecognitionSettings()
     }
 
-	//FunctionSettings 开启/切换(小球、形状、巡线)
+	//OnToggle1 开启/切换(小球、形状、巡线)
     /**
      * IODO:Voice recognition turned on
      */
@@ -520,13 +520,13 @@ namespace Quadruped {
         IRecognitionSettings()
     }   
     
-	//FunctionSettings 开启/切换(小球、形状、巡线)
+	//TogetherOn 开启/切换巡线+形状同是识别
     /**
      * IODO:Voice recognition turned on
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=OnToggle1 block="OnToggle1| %Col|Line|%Col2|Shape"
+     //% blockId=TogetherOn block="TogetherOn| %Col|Line|%Col2|Shape"
      export function TogetherOn(Col1: ColorID,Col2: ColorID): void { 
         IRecognitionToggle()
         FrameHeader = 0xAA
