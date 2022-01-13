@@ -267,7 +267,7 @@ namespace Quadruped {
     */
     //% group="Joint angle control"
     //% blockGap=9
-    //% blockId=Joint block="Joint angle control | %j|thigh| %d|Calf| %x|Side led| %c| %site "
+    //% blockId=Joint block="Joint | %j|thigh| %d|Calf| %x|Side led| %c| %site "
     export function Joint(j: Joints, d: number, x: number, c: number, site: sIte): void {
         switch (j) {
             case Joints.Left_fr: FL_d = d; FL_x = x; FL_c = c; break;
