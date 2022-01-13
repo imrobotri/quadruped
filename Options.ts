@@ -156,7 +156,7 @@ enum enColor {
 //识别功能ID
 enum FunctionID {
     ////% block="color label"
-    color = 1,
+    color = 7,
     //% block="Tag label"
     Tag = 2,   
 }
@@ -167,6 +167,8 @@ enum FunctionID1 {
     ball = 3,
     //% block="Line inspection"
     Line = 4, 
+    //% block="Shape inspection"
+    Shape = 6, 
 }
 
 
