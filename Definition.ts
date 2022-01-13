@@ -67,6 +67,12 @@ let ShaColID = 0x00
 let FrameHeader = 0x00
 let DataID = 0x00
 
+//Color
+let Color_ID = 0x00 
+
+//Shapes
+let Shapes_ID = 0x00
+
 //QR code
 let Identify_x = 0x00, Identify_y = 0x00, Identify_z = 0x00
 let Identify_Flip_x = 0x00, Identify_Flip_y = 0x00, Identify_Flip_z = 0x00
@@ -304,6 +310,10 @@ function IRecognitionSettings() {
     else if (DataID  == 0x03) { 
         TestTX[cnt++] = FunID           //功能ID
     }  
+    else if (DataID == 0x04) {
+        TestTX[cnt++] = ColID
+        TestTX[cnt++] = ShaColID 
+    }
     TestTX[2] = cnt - 3                 //计算数据长度 
      for (i; i < cnt;i++) {
          sum = sum + TestTX[i]
@@ -354,16 +364,35 @@ function Identify_receive() {
         usMBCRC16(Identify_RX, length_r + 3)
         if (Identify_RX[length_r + 3] == CRC_H && Identify_RX[length_r + 4] == CRC_L) {
             switch (Function_s) {
-                case 1: break;
+                case 1: Identify_Color(Identify_RX); break;
                 case 2: Identify_collection(Identify_RX); break;
                 case 3: Ball_rd(Identify_RX); break;
                 case 4: Line_inspection(Identify_RX); break;
+                case 5: Identify_Shapes(Identify_RX); break;
                 default: return
             }
         }
     }
     return
 }
+
+// 颜色识别
+function Identify_Color(Identify_RX_1: any) { 
+    let Identify_RX_2 = pins.createBuffer(10)
+    Identify_RX_2 = Identify_RX_1
+    let cnt_I = 3
+    Color_ID = Data_conversion(Identify_RX_2[cnt_I++],Identify_RX_2[cnt_I++])       //颜色ID（1红色、2）
+}
+
+// 形状识别
+function Identify_Shapes(Identify_RX_1: any) { 
+    let Identify_RX_2 = pins.createBuffer(10)
+    Identify_RX_2 = Identify_RX_1
+    let cnt_I = 3
+    Shapes_ID = Data_conversion(Identify_RX_2[cnt_I++],Identify_RX_2[cnt_I++])       //形状ID（1红色、2）
+}
+
+
 
 //QR code data acquisition||标签数据采集
 function Identify_collection(Identify_RX_1: any) {

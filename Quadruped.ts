@@ -428,53 +428,53 @@ namespace Quadruped {
         SG_SPI_Send()
     }
 
-	//RecognitionOn 识别设置
-    /**
-     * IODO:Voice recognition turned on
-     */
-     //% subcategory=sensor
-     //% blockGap=8
-     //% blockId=RecognitionOn block="Identify| %Fun|Color %Col"
-     export function RecognitionOn(Fun:  FunctionID,Col :ColorID): void {
-        FrameHeader = 0xAA
-        FunID = Fun
-        ColID = Col
-        IRecognitionSettings() 
-        // IRecognitionSettings(Fun, Col)//发送设置数据
-     }
+	// //RecognitionOn 识别设置
+    // /**
+    //  * IODO:Voice recognition turned on
+    //  */
+    //  //% subcategory=sensor
+    //  //% blockGap=8
+    //  //% blockId=RecognitionOn block="Identify| %Fun|Color %Col"
+    //  export function RecognitionOn(Fun:  FunctionID,Col :ColorID): void {
+    //     FrameHeader = 0xAA
+    //     FunID = Fun
+    //     ColID = Col
+    //     IRecognitionSettings() 
+    //     // IRecognitionSettings(Fun, Col)//发送设置数据
+    //  }
 
-	//inePatrolColorBlock 巡线色块
-    /**
-     * IODO:Voice recognition turned on
-     */
-     //% subcategory=sensor
-     //% blockGap=8
-     //% blockId=LinePatrolColorBlock block="Line inspection and identification| %Sha|Color %Col"
-    export function LinePatrolColorBlock(Sha: ShapeID, Col: ColorID): void {
-        FrameHeader = 0xAA
-        ShaID = Sha
-        ColID = Col
-        IRecognitionSettings() 
-        // IRecognitionSettings(Fun, Col)//发送设置数据
-     }
+	// //inePatrolColorBlock 巡线色块
+    // /**
+    //  * IODO:Voice recognition turned on
+    //  */
+    //  //% subcategory=sensor
+    //  //% blockGap=8
+    //  //% blockId=LinePatrolColorBlock block="Line inspection and identification| %Sha|Color %Col"
+    // export function LinePatrolColorBlock(Sha: ShapeID, Col: ColorID): void {
+    //     FrameHeader = 0xAA
+    //     ShaID = Sha
+    //     ColID = Col
+    //     IRecognitionSettings() 
+    //     // IRecognitionSettings(Fun, Col)//发送设置数据
+    //  }
 
-	//RecognitionReset 识别复位
-    /**
-     * IODO:Voice recognition turned on
-     */
-     //% subcategory=sensor
-     //% blockGap=8
-     //% blockId=RecognitionReset block="RecognitionReset"
-     export function RecognitionReset(): void {
-        FrameHeader = 0xBB
-        FunID = 0X00
-        ColID = 0X00        
-        ShaID = 0X00
-        ColID = 0X00
-        IRecognitionSettings() 
-        // IRecognitionSettings(Fun, Col)//发送设置数据
-    }
-    
+	// //RecognitionReset 识别复位
+    // /**
+    //  * IODO:Voice recognition turned on
+    //  */
+    //  //% subcategory=sensor
+    //  //% blockGap=8
+    //  //% blockId=RecognitionReset block="RecognitionReset"
+    //  export function RecognitionReset(): void {
+    //     FrameHeader = 0xBB
+    //     FunID = 0X00
+    //     ColID = 0X00        
+    //     ShaID = 0X00
+    //     ColID = 0X00
+    //     IRecognitionSettings() 
+    //     // IRecognitionSettings(Fun, Col)//发送设置数据
+    // }
+  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -518,7 +518,23 @@ namespace Quadruped {
         ColID = Col
         FunID = Fun
         IRecognitionSettings()
-    }    
+    }   
+    
+	//FunctionSettings 开启/切换(小球、形状、巡线)
+    /**
+     * IODO:Voice recognition turned on
+     */
+     //% subcategory=sensor
+     //% blockGap=8
+     //% blockId=OnToggle1 block="OnToggle1| %Col|Line|%Col2|Shape"
+     export function TogetherOn(Col1: ColorID,Col2: ColorID): void { 
+        IRecognitionToggle()
+        FrameHeader = 0xAA
+        DataID = 0x04
+        ColID = Col1
+        ShaColID = Col2
+        IRecognitionSettings()
+    }       
 
     //###Tag code position return value||标签位置返回值
     /**
@@ -589,6 +605,36 @@ namespace Quadruped {
             case Line_Position.De_position: return Line_position;
             default: return 255
         }
+    }
+
+    //###ColorRecognitionreturn||颜色返回
+    /**
+    * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
+    */
+    //% subcategory=sensor
+    //% blockGap=8
+    //% blockId=ColorRecognition block="Color Recognition return value"
+    export function Colorreturn(): number {
+        Function_c = 0x41
+        Function_s = 1
+        Identify_send()
+        Identify_receive()
+        return Color_ID;
+    }
+
+    //###ShapeRecognitionreturn||形状返回
+    /**
+    * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
+    */
+    //% subcategory=sensor
+    //% blockGap=8
+    //% blockId=ShapeRecognition block="shape recognition returns"
+    export function Shapereturn(): number {
+        Function_c = 0x37
+        Function_s = 5
+        Identify_send()
+        Identify_receive()
+        return Shapes_ID;
     }
 
 
