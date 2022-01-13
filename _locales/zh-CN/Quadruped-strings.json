@@ -22,7 +22,7 @@
     "Quadruped.GetGesture|block": "获取手势值",
     "Quadruped.Steering_gear|block": "舵机控制 |第 %h |PWM值 %pwm |速度 %Gap",
     "Quadruped.Image_init|block": "图像识别初始化",
-    "Quadruped.Tag_return|block": "二维码返回 | %data",
+    "Quadruped.Tag_return|block": "标签返回 | %data",
     "Quadruped.Ball_return|block": "小球返回 | %P",
     "Quadruped.Line_return|block": "巡线返回 | %X",
     "Quadruped.Colorreturn|block": "颜色返回",
