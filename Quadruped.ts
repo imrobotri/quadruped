@@ -266,8 +266,8 @@ namespace Quadruped {
     * TODO:select the corresponding leg, joint angle and whether to implement the command of the current building block
     */
     //% group="Joint angle control"
-    //% blockGap=8
-    //% blockId=Quadruped_Joint block="Joint angle control | %j|thigh %d|Calf %x|Side led %c| %site "
+    //% blockGap=9
+    //% blockId=Joint block="Joint angle control | %j|thigh| %d|Calf| %x|Side led| %c| %site "
     export function Joint(j: Joints, d: number, x: number, c: number, site: sIte): void {
         switch (j) {
             case Joints.Left_fr: FL_d = d; FL_x = x; FL_c = c; break;
@@ -278,6 +278,7 @@ namespace Quadruped {
         if (site = 1)
             Joint_SPI_Send()
     }
+
     //###Joint Heartbeat||关节心跳
     /**
     * TODO:continuously send the previously set command information (to prevent machine communication loss)
@@ -331,7 +332,7 @@ namespace Quadruped {
     */
     //% subcategory=sensor
     //% blockGap=8
-    //% blockId=sensor_Human_Infrared block="Human Infrared |pin %pin |mode %value"
+    //% blockId=sensor_Human_Infrared block="Human Infrared|pin|%pin|mode| %value"
     export function Human_induction(pin: AnalogPin, value=50): number {
         let w = pins.analogReadPin(pin)
         if (w >= value)
