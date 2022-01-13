@@ -91,6 +91,7 @@
     "FunctionID.Tag|block": "Tag标签",
     "FunctionID1.ball|block": "寻球",
     "FunctionID1.Line|block": "巡线",
+    "FunctionID1.Shape|block": "形状",
     "FunctionID.QR|block": "二维码",
     "ColorID.Red|block": "红色",
     "ColorID.Green|block": "绿色",
