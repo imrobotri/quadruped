@@ -6,7 +6,8 @@
 namespace Quadruped {
 
     /**
-     *TODO:Initialization: define the communication pins and related settings of microbit and adapter board (initialization is required before basic control, external steering gear control and joint control).After initial, the LED dot matrix screen of microbit cannot be used
+     *TODO: Define the communication pins and related settings of the microbit and the adapter board (basic control, external servo control, and joint control need to be initialized). After initialization, the LED dot matrix screen of the microbit will not work
+     *TODO:定义microbit和转接板的通讯引脚及相关设置（基本控制、外接舵机控制、关节控制前都需进行初始化）。初始化后microbit的LED点阵屏将无法使用
      */
     //% group="Set up"
     //% blockGap=8
@@ -16,7 +17,8 @@ namespace Quadruped {
     }
     //###return hexadecimal number||返回状态信息
     /**
-    * TODO:Return information: return the status information of the robot itself (0x13 is trotting, 0x00 is idle, 0x01 is powered on, 0x06 is crawling, 0x08 is falling mode)
+    * TODO:Returns the status information of the robot itself (0x00 idle, 0x01 powered on, 0x06 crawling, 0x7 recovering, 0x08 fell, 0x13 trot)
+    * TODO:返回机器人自身的状态信息（0x00空闲，0x01上电，0x06爬行，0x7恢复中，0x08摔倒，0x13小跑）
     */
     //% group="control"
     //% blockGap=8
@@ -27,6 +29,7 @@ namespace Quadruped {
     //####Reset||复位
     /**
      *TODO:the movement speed and attitude angle are reset to 0
+     *TODO:移动速度和姿态角重置为0
      */
     //% group="control"
     //% blockGap=8
@@ -41,9 +44,10 @@ namespace Quadruped {
         rc_att_cmd_y = 0.00 //Side swing
         rc_att_cmd = 0.00 //Heading
     }
-
+    //####Height||高度
     /**
      * TODO: height adjustment of robot body (0-10 range adjustment, 0 is the lowest and 10 is the highest)
+     * TODO: 机器人本体高度调节（0-10范围调节，0最低，10最高）
      */
     //% group="control"
     //% blockGap=8
@@ -56,6 +60,7 @@ namespace Quadruped {
     //###Start||启动
     /**
      * TODO:the robot is powered on and enters the semi squatting state（Start sending instructions internally, and the basic control needs to start initialization start before other building blocks can be used)
+     * TODO:机器人上电进入半蹲状态（内部开始发送指令，基本控制需要先初始化启动才能使用其他积木）
      */
     //% group="control"
     //% blockGap=8
@@ -80,6 +85,7 @@ namespace Quadruped {
     //###Quadruped Stand||站立
     /**
      * TODO:the machine enters standing mode（In trotting and crawling gait, you need to stop in place, you can add this building block to enter standing mode)
+     * TODO:机器进入站立模式（小跑和爬行时需要原地停止，可以加这个积木进入站立模式）
      */
     //% group="control"
     //% blockGap=8
@@ -90,6 +96,7 @@ namespace Quadruped {
     //####Quadruped Fall recovery||摔倒恢复
     /**
      * TODO:automatically detect whether to enter fall mode, and then automatically enter fall recovery
+     * TODO:自动检测是否进入跌倒模式，然后自动进入跌倒恢复
      */
     //% group="control"
     //% blockGap=8
@@ -108,7 +115,8 @@ namespace Quadruped {
     }
     //###Heartbeat||心跳
     /**
-     * TODO:continuously send the instruction information set before (to prevent machine communication loss)
+     * TODO:This block needs to be placed in a loop (to prevent loss of communication with the machine)
+     * TODO:此方块需要放在循环中（防止与机器通讯丢失）
      */
     //% group="control"
     //% blockGap=8
@@ -120,6 +128,7 @@ namespace Quadruped {
     //###Stop||停止
     /**
      * TODO:enter the power-off mode and the fuselage squats down (internal stop sending command)
+     * TODO:进入关机模式，机身下蹲（内部停止发送指令）
      */
     //% group="control"
     //% blockGap=8
@@ -139,6 +148,7 @@ namespace Quadruped {
     //###gait||步态
     /**
      * TODO:two options: trot and crawl（Note: crawling gait can only be used when the fuselage is at the highest state)
+     * TODO:两种选择：小跑和爬行（注意：爬行步态只能在机身处于最高状态时使用）
      */
     //% group="control"
     //% blockGap=8
@@ -171,6 +181,7 @@ namespace Quadruped {
     //###Movement direction and speed||运动方向与速度
     /**
     * TODO:forward and backward, left and right movement, left and right rotation speed control.Time in milliseconds
+    * TODO:前后、左右移动、左右旋转速度控制。时间以毫秒为单位
     */
     //% group="control"
     //% blockGap=8
@@ -213,6 +224,7 @@ namespace Quadruped {
     //###Control angle||控制角度
     /**
     * TODO:angle control of left-right swing, head up, head down and left-right twist.Time in milliseconds
+    * TODO:左右摆动、抬头、低头和左右扭转的角度控制。时间以毫秒为单位
     */
     //% group="control"
     //% blockGap=8
@@ -264,6 +276,7 @@ namespace Quadruped {
     //###Joint angle control||关节控制
     /**
     * TODO:select the corresponding leg, joint angle and whether to implement the command of the current building block
+    * TODO:选择对应的腿、关节角度以及是否执行当前积木的命令
     */
     //% group="Joint angle control"
     //% blockGap=9
@@ -282,6 +295,7 @@ namespace Quadruped {
     //###Joint Heartbeat||关节心跳
     /**
     * TODO:continuously send the previously set command information (to prevent machine communication loss)
+    * TODO:不断发送之前设置的命令信息（防止机器通讯丢失）
     */
     //% group="Joint angle control"
     //% blockGap=8
@@ -294,6 +308,7 @@ namespace Quadruped {
     //###Ultrasound||超声波
     /**
     * TODO:Select the transmitting and receiving pins corresponding to ultrasonic, and select the unit of returned data
+    * TODO:选择超声波对应的发射和接收引脚，并选择返回数据的单位
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -317,8 +332,8 @@ namespace Quadruped {
     }
     //###Infrared||红外
     /**
-     * TODO:select the data receiving pin (return 1 to recognize the human body, 0 not recognized)
-     * TODO:选择数据接收引脚（返回1识别人体，0不识别）
+     * TODO:Select the data receiving pin (1 obstacle, 0 no recognition)
+     * TODO:选择数据接收引脚（1障碍物，0无识别到）
      */
     //% subcategory=sensor
     //% blockGap=8
@@ -329,8 +344,8 @@ namespace Quadruped {
     }
     //###Human body induction||人体感应
     /**
-    * TODO:select the data receiving pin (return 1 to recognize the human body, 0 not recognized)
-    * TODO:选择数据接收引脚（返回1识别人体，0不识别）
+    * TODO:Select the data receiving pin (1 recognizes the human body, 0 does not recognize)
+    * TODO:选择数据接收引脚（1识别到人体，0无识别到）
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -344,6 +359,7 @@ namespace Quadruped {
     //###GestureInit||手势初始化
     /**
     * IODO:gesture related pins, configuration settings(success: 0 failure: 255)
+    * IODO:手势相关引脚、配置设置（成功：0 失败：255）
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -365,6 +381,7 @@ namespace Quadruped {
     //###GetGesture||获取手势
     /**
     * IODO:returns the value of gesture direction
+    * IODO:返回手势方向的值
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -396,6 +413,7 @@ namespace Quadruped {
     //###Select_gesture_as||选择手势为
     /**
     * IODO:defines the value of gesture direction
+    * IODO:定义手势方向的值
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -407,6 +425,7 @@ namespace Quadruped {
     //###Steering gear control||舵机控制
     /**
     * IODO:select the external control pin, PWM value range: 500-2500 (0 ° - 180 °), speed: the response speed of steering gear: 0-10 (0 is fast - 10 bit slow)
+    * IODO:选择外部控制引脚，PWM值范围：500-2500（0°-180°），速度：舵机响应速度：0-10（0为快-10位慢）
     */
     //% group="Additional steering gear control"
     //% blockGap=8
@@ -484,6 +503,7 @@ namespace Quadruped {
     //###Image recognition initialization||图像识别初始化
     /**
     * IODO:Image recognition internal related pins and initialization of settings
+    * IODO:图像识别内部相关引脚和设置初始化
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -494,7 +514,8 @@ namespace Quadruped {
 
 	//OnToggleIdentify 开启/切换(颜色、标签、二维码)
     /**
-     * IODO:Voice recognition turned on
+     * IODO:Set pattern recognition function (color, label)
+     * IODO:设置图形识别功能（颜色、标签）
      */
      //% subcategory=sensor
      //% blockGap=8
@@ -509,7 +530,8 @@ namespace Quadruped {
 
 	//OnToggle1 开启/切换(小球、形状、巡线)
     /**
-     * IODO:Voice recognition turned on
+     * IODO:Set pattern recognition functions (balls, shapes, lines) and identify colors
+     * IODO:设置图形识别功能（小球、形状、线）以及对应识别颜色
      */
      //% subcategory=sensor
      //% blockGap=8
@@ -525,7 +547,8 @@ namespace Quadruped {
     
 	//TogetherOn 开启/切换巡线+形状同是识别
     /**
-     * IODO:Voice recognition turned on
+     * IODO:At the same time, open the setting pattern recognition function line patrol + line patrol and the corresponding recognition color
+     * IODO:同时开启设置图形识别功能巡线+巡线以及对应识别颜色
      */
      //% subcategory=sensor
      //% blockGap=8
@@ -542,6 +565,7 @@ namespace Quadruped {
     //###Tag code position return value||标签位置返回值
     /**
     * IODO: returns the value of the Tag code set, and the X, y, Z, XYZ axes are flipped (corresponding position and flipping angle)
+    * IODO:返回Tag码集的值，翻转X、y、Z、XYZ轴（对应位置和翻转角度）
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -568,6 +592,7 @@ namespace Quadruped {
     //###Ball return value||小球返回值
     /**
     * IODO:returns the return information of the graphic small ball, the recognition status (returns 1 and 0, 1 means recognized, 0 means unrecognized), the X and Y axis position of the ball center in the image, the two-dimensional width and height of the small ball, and the recognition effect (the higher the recognition effect, the distance of the small ball).Return value (float)
+    * IODO:返回图形小球的返回信息，识别状态（返回1和0，1表示已识别，0表示未识别），图像中小球中心的X、Y轴位置，二维宽高 小球，以及识别效果（识别效果越高，小球的距离）。返回值（浮点数）
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -592,6 +617,7 @@ namespace Quadruped {
     //###Line patrol return||巡线返回
     /**
     * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
+    * IODO:状态（返回1和0，1识别，0不识别），识别效果（识别线像素值大小为0-19200），偏差角度（-90°--0°--90°），偏差 X 轴位置 (- 160 - 0 - 160,) 返回值 (float)
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -612,7 +638,8 @@ namespace Quadruped {
 
     //###ColorRecognitionreturn||颜色返回
     /**
-    * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
+    * IODO:Color returns 1~4 numbers (1 corresponds to red, 2 corresponds to green, 3 yellow, 4 blue)
+    * IODO:颜色返回1~4数字（1对应红色、2对应绿色、3黄色、4蓝色）
     */
     //% subcategory=sensor
     //% blockGap=8
@@ -627,7 +654,8 @@ namespace Quadruped {
 
     //###ShapeRecognitionreturn||形状返回
     /**
-    * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
+    * IODO:Recognized shape returns 0~3 numbers (0: none, 1: triangle, 2: rectangle, 3: circle)
+    * IODO:识别形状返回0~3数字（0：无、1：三角形、2：矩形、3：圆形）
     */
     //% subcategory=sensor
     //% blockGap=8
