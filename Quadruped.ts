@@ -318,6 +318,7 @@ namespace Quadruped {
     //###Infrared||红外
     /**
      * TODO:select the data receiving pin (return 1 to recognize the human body, 0 not recognized)
+     * TODO:选择数据接收引脚（返回1识别人体，0不识别）
      */
     //% subcategory=sensor
     //% blockGap=8
