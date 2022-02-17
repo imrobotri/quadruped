@@ -177,12 +177,14 @@ enum FunctionID1 {
 enum ColorID { 
     //% block="Red"
     Red = 1, 
-    //% block="Green"
-    Green = 2,
-    //% block="Black"
-    Black = 3,
     //% block="Blue"
-    Blue = 4,    
+    Green = 2,
+    //% block="Yellow"
+    Yellow = 3,
+    //% block="Green"
+    Blue = 4, 
+    //% block="Black"
+    Black = 5,     
 }
 //识别形状ID
 enum ShapeID { 
