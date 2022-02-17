@@ -165,8 +165,6 @@ enum FunctionID {
 enum FunctionID1 {
     //% block="Seek ball"
     ball = 3,
-    //% block="Line inspection"
-    Line = 4, 
     //% block="Shape inspection"
     Shape = 6, 
 }
@@ -182,10 +180,17 @@ enum ColorID {
     //% block="Yellow"
     Yellow = 3,
     //% block="Green"
-    Blue = 4, 
-    //% block="Black"
-    Black = 5,     
+    Blue = 4,     
 }
+
+//识别颜色ID
+enum ColorLineID { 
+    //% block="Red"
+    Black = 1, 
+    //% block="Red"
+    Red = 2,    
+}
+
 //识别形状ID
 enum ShapeID { 
     //% block="none"

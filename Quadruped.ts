@@ -543,7 +543,24 @@ namespace Quadruped {
         ColID = Col
         FunID = Fun
         IRecognitionSettings()
-    }   
+    } 
+    
+ 	//OnToggle1 开启/切换(巡线)
+    /**
+     * IODO:Set pattern recognition functions (balls, shapes, lines) and identify colors
+     * IODO:设置图形识别功能(线）以及对应识别颜色
+     */
+     //% subcategory=sensor
+     //% blockGap=8
+     //% blockId=OnToggle1 block="OnToggle2| %Col|Line"
+     export function OnToggle2(Col: ColorLineID): void { 
+        IRecognitionToggle()
+        FrameHeader = 0xAA
+        DataID = 0x01
+        ColID = Col
+        FunID = 0x04
+        IRecognitionSettings()
+    }    
     
 	//TogetherOn 开启/切换巡线+形状同是识别
     /**
@@ -553,7 +570,7 @@ namespace Quadruped {
      //% subcategory=sensor
      //% blockGap=8
      //% blockId=TogetherOn block="TogetherOn| %Col|Line|%Col2|Shape"
-     export function TogetherOn(Col1: ColorID,Col2: ColorID): void { 
+     export function TogetherOn(Col1: ColorLineID,Col2: ColorID): void { 
         IRecognitionToggle()
         FrameHeader = 0xAA
         DataID = 0x04
@@ -639,7 +656,8 @@ namespace Quadruped {
     //###ColorRecognitionreturn||颜色返回
     /**
     * IODO:Color returns 1~4 numbers (1 corresponds to red, 2 corresponds to green, 3 yellow, 4 blue)
-    * IODO:颜色返回1~4数字（1对应红色、2对应绿色、3黄色、4蓝色）
+    * IODO:颜色返回16bit数字1（红色）2（蓝色）4（黄色）8（绿色）3（有红色和黑色）5（红黄）6（黄蓝）7（红蓝黄）9（绿红）
+    * 
     */
     //% subcategory=sensor
     //% blockGap=8
