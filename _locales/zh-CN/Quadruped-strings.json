@@ -30,7 +30,7 @@
     "Quadruped.TogetherOn|block": "开启/切换|%Col1|巡线 |%Col2|形状同时识别功能",
     "Quadruped.OnToggle|block": "开启/切换|%Fun|识别功能",
     "Quadruped.OnToggle1|block": "开启/切换| %Col|%Fun|识别功能",
-    "Quadruped.OnToggle2 |block": "开启/切换| %Col|巡线识别功能",
+    "Quadruped.OnToggle2|block": "开启/切换| %Col|巡线识别功能",
     "Quadruped.Joint_Heartbeat|block": "关节心跳",
     "Quadruped.Joint|block": "关节角度 | %j|大腿 %d|小腿 %x|侧腿 %c| %s",
     "gait.Crawl|block": "爬行",
