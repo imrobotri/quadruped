@@ -311,6 +311,7 @@ function IRecognitionSettings() {
         TestTX[cnt++] = FunID           //功能ID
     }  
     else if (DataID == 0x04) {
+        TestTX[cnt++] = FunID
         TestTX[cnt++] = ColID
         TestTX[cnt++] = ShaColID 
     }
