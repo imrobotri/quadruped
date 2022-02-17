@@ -176,11 +176,11 @@ enum ColorID {
     //% block="Red"
     Red = 1, 
     //% block="Blue"
-    Green = 2,
+    Blue  = 2,
     //% block="Yellow"
     Yellow = 3,
     //% block="Green"
-    Blue = 4,     
+    Green = 4,     
 }
 
 //识别颜色ID

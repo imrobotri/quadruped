@@ -552,7 +552,7 @@ namespace Quadruped {
      */
      //% subcategory=sensor
      //% blockGap=8
-     //% blockId=OnToggle1 block="OnToggle2| %Col|Line"
+     //% blockId=OnToggle2 block="OnToggle2| %Col|Line"
      export function OnToggle2(Col: ColorLineID): void { 
         IRecognitionToggle()
         FrameHeader = 0xAA
