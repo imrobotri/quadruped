@@ -545,9 +545,9 @@ namespace Quadruped {
         IRecognitionSettings()
     } 
     
- 	//OnToggle1 开启/切换(巡线)
+ 	//OnToggle2 开启/切换(巡线)
     /**
-     * IODO:Set pattern recognition functions (balls, shapes, lines) and identify colors
+     * IODO:Set pattern recognition functions (lines) and identify colors
      * IODO:设置图形识别功能(线）以及对应识别颜色
      */
      //% subcategory=sensor
