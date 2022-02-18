@@ -18,7 +18,7 @@ namespace Quadruped {
     //###return hexadecimal number||返回状态信息
     /**
     * TODO:Returns the status information of the robot itself (0x00 idle, 0x01 powered on, 0x06 crawling, 0x7 recovering, 0x08 fell, 0x13 trot)
-    * TODO:返回机器人自身的状态信息（0x00空闲，0x01上电，0x06爬行，0x7恢复中，0x08摔倒，0x13小跑）
+    * TODO:返回机器人自身的状态信息（0x00空闲，0x01上电，0x04，小跑0x06爬行，0x7恢复中，0x08摔倒）
     */
     //% group="control"
     //% blockGap=8
@@ -55,7 +55,12 @@ namespace Quadruped {
     //% blockId=Quadruped_Height block="Height %h"
     export function Height(h: number): void {
         rc_pos_cmd = h * 0.01
-        SPI_Send()
+        for (let i = 0; i < 10; i++)
+        {
+            SPI_Send()
+            basic.pause(100)
+        }
+        
     }
     //###Start||启动
     /**
@@ -134,7 +139,7 @@ namespace Quadruped {
     //% blockGap=8
     //% blockId=Quadruped_Stop block="Stop"
     export function Stop(): void {
-        if (robot_mode == 0x04) {
+        if (robot_mode == 0x04||robot_mode == 0x06) {
             Standing()
         }
         if (robot_mode == 1 || robot_mode == 0X02) {
@@ -166,6 +171,12 @@ namespace Quadruped {
                     }
                 }
             case gait.Crawl:
+                rc_pos_cmd = 0.1
+                for (let i = 0; i < 5; i++)
+                {
+                    SPI_Send()
+                    basic.pause(100)
+                    }
                 gait_mode = 0x03;
                 while (1) {
                     SPI_Send()
@@ -181,7 +192,7 @@ namespace Quadruped {
     //###Movement direction and speed||运动方向与速度
     /**
     * TODO:forward and backward, left and right movement, left and right rotation speed control.Time in milliseconds
-    * TODO:前后、左右移动、左右旋转速度控制。时间以毫秒为单位
+    * TODO:前后、左右移动、左右旋转速度控制。时间以秒为单位
     */
     //% group="control"
     //% blockGap=8
@@ -224,7 +235,7 @@ namespace Quadruped {
     //###Control angle||控制角度
     /**
     * TODO:angle control of left-right swing, head up, head down and left-right twist.Time in milliseconds
-    * TODO:左右摆动、抬头、低头和左右扭转的角度控制。时间以毫秒为单位
+    * TODO:左右摆动、抬头、低头和左右扭转的角度控制。时间以秒为单位
     */
     //% group="control"
     //% blockGap=8
@@ -295,7 +306,7 @@ namespace Quadruped {
     //###Joint Heartbeat||关节心跳
     /**
     * TODO:continuously send the previously set command information (to prevent machine communication loss)
-    * TODO:不断发送之前设置的命令信息（防止机器通讯丢失）
+    * TODO:不断发送上一步设置的命令信息（防止机器通讯丢失）
     */
     //% group="Joint angle control"
     //% blockGap=8
@@ -425,7 +436,7 @@ namespace Quadruped {
     //###Steering gear control||舵机控制
     /**
     * IODO:select the external control pin, PWM value range: 500-2500 (0 ° - 180 °), speed: the response speed of steering gear: 0-10 (0 is fast - 10 bit slow)
-    * IODO:选择外部控制引脚，PWM值范围：500-2500（0°-180°），速度：舵机响应速度：0-10（0为快-10位慢）
+    * IODO:选择外部控制引脚，PWM值范围：500-2500（0°~180°），速度：舵机响应速度：0~10（0快~10慢）
     */
     //% group="Additional steering gear control"
     //% blockGap=8
@@ -635,7 +646,7 @@ namespace Quadruped {
     //###Line patrol return||巡线返回
     /**
     * IODO:status (1 and 0 are returned, 1 is recognized, 0 is not recognized), recognition effect (pixel value size of recognition line is 0-19200), deviation angle (- 90 ° -- 0 ° -- 90 °), deviation X-axis position (- 160 - 0 - 160,) return value (float)
-    * IODO:状态（返回1和0，1识别，0不识别），识别效果（识别线像素值大小为0-19200），偏差角度（-90°--0°--90°），偏差 X 轴位置 (- 160 - 0 - 160,) 返回值 (float)
+    * IODO:状态（返回1和0，1识别，0未识别到），识别效果（识别线像素值大小为0-19200），偏差角度（-90°--0°--90°），偏差 X 轴位置 (- 160 - 0 - 160,) 返回值 (float)
     */
     //% subcategory=sensor
     //% blockGap=8
