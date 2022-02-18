@@ -134,7 +134,7 @@ namespace Quadruped {
     //% blockGap=8
     //% blockId=Quadruped_Stop block="Stop"
     export function Stop(): void {
-        if (robot_mode == 13) {
+        if (robot_mode == 0x04) {
             Standing()
         }
         if (robot_mode == 1 || robot_mode == 0X02) {
@@ -159,7 +159,7 @@ namespace Quadruped {
                 gait_mode = 0x01;
                 while (1) {
                     SPI_Send()
-                    if (robot_mode == 13) {
+                    if (robot_mode == 0x04) {
                         SPI_Send()
                         //serial.writeNumber(2)
                         return
@@ -169,7 +169,7 @@ namespace Quadruped {
                 gait_mode = 0x03;
                 while (1) {
                     SPI_Send()
-                    if (robot_mode == 6) {
+                    if (robot_mode == 0x06) {
                         SPI_Send()
                         //serial.writeNumber(2)
                         return
@@ -576,7 +576,7 @@ namespace Quadruped {
         DataID = 0x04
         ColID = Col1
         ShaColID = Col2
-        FunID = 0x08 
+        FunID = 0x07 
         IRecognitionSettings()
     }       
 
