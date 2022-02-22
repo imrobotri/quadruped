@@ -587,7 +587,7 @@ namespace Quadruped {
         DataID = 0x04
         ColID = Col1
         ShaColID = Col2
-        FunID = 0x07 
+        FunID = 0x08 
         IRecognitionSettings()
     }       
 
