@@ -535,6 +535,7 @@ namespace Quadruped {
         for (let i = 1; i < 7; i++)
             {
             IRecognitionToggle()    //复位
+            SPI_Send()
         }
         FrameHeader = 0xAA
         DataID = 0x03
@@ -553,7 +554,8 @@ namespace Quadruped {
      export function OnToggle1(Col: ColorID,Fun:  FunctionID1): void { 
         for (let i = 1; i < 7; i++)
         {
-        IRecognitionToggle()    //复位
+            IRecognitionToggle()    //复位
+            SPI_Send()
         }
         FrameHeader = 0xAA
         DataID = 0x01
@@ -573,7 +575,8 @@ namespace Quadruped {
      export function OnToggle2(Col: ColorLineID): void { 
         for (let i = 1; i < 7; i++)
         {
-        IRecognitionToggle()    //复位
+            IRecognitionToggle()    //复位
+            SPI_Send()
         }
         FrameHeader = 0xAA
         DataID = 0x01
@@ -593,7 +596,8 @@ namespace Quadruped {
      export function TogetherOn(Col1: ColorLineID,Col2: ColorID): void { 
         for (let i = 1; i < 7; i++)
         {
-        IRecognitionToggle()    //复位
+            IRecognitionToggle()    //复位
+            SPI_Send()
         }
         FrameHeader = 0xAA
         DataID = 0x04
