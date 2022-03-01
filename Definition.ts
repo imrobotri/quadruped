@@ -97,6 +97,9 @@ let CRC_H = 0x00
 let CRC_tx_L = 0x00
 let CRC_tx_H = 0x00
 
+let CRC_tx_L1 = 0x00
+let CRC_tx_H1 = 0x00
+
 let Function_s = 0      //Function selection (1: two-dimensional code 2: small ball 3: line patrol)
 let Function_c = 0x00   //function code
 
@@ -346,10 +349,10 @@ function Identify_send() {
     Identify_TX[cnt_p++] = Function_c
     Identify_TX[cnt_p++] = 0x00
     Identify_TX[cnt_p++] = 0x0A
-    usMBCRC16(Identify_TX, cnt_p)
+    usMBCRC161(Identify_TX, cnt_p)
     // serial.writeBuffer(Identify_TX)
-    Identify_TX[cnt_p++] = CRC_tx_H
-    Identify_TX[cnt_p++] = CRC_tx_L
+    Identify_TX[cnt_p++] = CRC_tx_H1
+    Identify_TX[cnt_p++] = CRC_tx_L1
     serial.writeBuffer(Identify_TX)
     basic.pause(10)
 
@@ -853,6 +856,33 @@ function usMBCRC16(pucFrame: any, usLen: number) {
     CRC_tx_H = Data_3 & 0x00ff
 
 }
+
+//CRC check
+function usMBCRC161(pucFrame: any, usLen: number) {
+    // serial.writeNumber(usLen)
+    // serial.writeBuffer(pucFrame)
+    let Data_1 = pins.createBuffer(9)
+    let Data_2 = pins.createBuffer(2)
+    let Data_3
+    let usLen_1 = usLen
+    Data_1 = pucFrame
+    let ucCRCHi = 0xFF
+    let ucCRCLo = 0xFF
+    let iIndex, i = 0
+    while (usLen > 0) {
+        usLen--
+        iIndex = (ucCRCLo ^ Data_1[i++])
+        ucCRCLo = (ucCRCHi ^ aucCRCHi[iIndex])
+        ucCRCHi = aucCRCLo[iIndex]
+    }
+    Data_3 = ucCRCHi << 8 | ucCRCLo
+    CRC_L = Data_3 >> 8
+    CRC_H = Data_3 & 0x00ff
+    CRC_tx_L1 = Data_3 >> 8
+    CRC_tx_H1 = Data_3 & 0x00ff
+
+}
+
 //CRC data conversion
 function Data_conversion(data1: number, data2: number): number {
     let data3
