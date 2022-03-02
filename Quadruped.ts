@@ -703,7 +703,7 @@ namespace Quadruped {
     //% blockGap=8
     //% blockId=ShapeRecognition block="shape recognition returns"
     export function Shapereturn(): number {
-        Function_c = 0x37
+        Function_c = 0x23
         Function_s = 5
         Identify_send()
         Identify_receive()

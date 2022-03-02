@@ -391,9 +391,9 @@ function Identify_Color(Identify_RX_1: any) {
 
 // 形状识别
 function Identify_Shapes(Identify_RX_1: any) { 
-    let Identify_RX_2 = pins.createBuffer(10)
+    let Identify_RX_2 = pins.createBuffer(50)
     Identify_RX_2 = Identify_RX_1
-    let cnt_I = 3
+    let cnt_I = 11
     Shapes_ID = Data_conversion(Identify_RX_2[cnt_I++],Identify_RX_2[cnt_I++])       //形状ID（1红色、2）
 }
 
