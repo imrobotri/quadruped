@@ -54,7 +54,7 @@ let HR_c = 0.0
 
 //########Image Identification||图像识别
 //------------definition--------------
-let Identify_TX = pins.createBuffer(9)
+let Identify_TX = pins.createBuffer(30)
 let Identify_RX = pins.createBuffer(50)
 let cnt_p = 0
 
