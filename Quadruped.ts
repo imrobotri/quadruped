@@ -199,8 +199,6 @@ namespace Quadruped {
     //% speed1.min=0.00 speed1.max=10.00
     //% time1.min=0 time1.max=255
     //% blockId=Quadruped_Control_s block="Control direction| %m|speed %speed1\\%|time %time1"
-    //% speed1.shadow="speedPicker"
-    //% time1.shadow="timePicker"
     export function Control_s(m: Mov_dir, speed1: number, time1: number): void {
         let Sum_S = 0.00
         let time_ms = 0
@@ -244,8 +242,6 @@ namespace Quadruped {
     //% angle1.min=0.00 angle1.max=10.00
     //% time1.min=0 time1.max=255
     //% blockId=Quadruped_Control_a block="Control angle |%m|angle_size %angle1|time %time1"
-    //% angle1.shadow="protractorPicker"
-    //% time1.shadow="timePicker"
     export function Control_a(m: Mov_ang, angle1: number, time1: number): void {
         let time_ms = 0
         let time_s = time1*1000
@@ -448,8 +444,6 @@ namespace Quadruped {
     //% pwm.min=500 pwm.max=2500
     //% Gap.min=1 Gap.max=9
     //% blockId=sensor_Steering_gear block="Steering_gear| %h | PWM_value %pwm|Rotation speed %Gap\\%"
-    //% pwm.shadow="protractorPicker"
-    //% Gap.shadow="speedPicker"
     export function Steering_gear(h: number, pwm: number, Gap: number) {
         usb_send_cnt_1 = 0;
 
