@@ -13,7 +13,7 @@
     "Quadruped.Height|block": "高度 %h",
     "Quadruped.Gait|block": "步态 %g",
     "Quadruped.Control_s|block": "控制 |%m| 速度 %speed1 |时间 %time1",
-    "Quadruped.Control_a|block": "控制 | %m| 角度 %speed1 |时间 %time1",
+    "Quadruped.Control_a|block": "控制 |%m| 角度 %speed1 |时间 %time1",
     "Quadruped.Ultrasound|block": "超声波 | 发射 %trig |接收 %echo |单位 %unit",
     "Quadruped.Infrared|block": "红外传感器 | 接收 %pin",
     "Quadruped.Human_induction|block": "人体感应 | 接收 %pin",
