@@ -407,7 +407,7 @@ function Identify_collection(Identify_RX_1: any) {
     let Identify_RX_2 = pins.createBuffer(50)
     Identify_RX_2 = Identify_RX_1
     let cnt_I = 3
-    //Identify_status = Data_conversion(Identify_RX_2[cnt_I++], Identify_RX_2[cnt_I++])   //
+    Identify_status = Data_conversion(Identify_RX_2[cnt_I++], Identify_RX_2[cnt_I++])   //
     // serial.writeNumber(Identify_status)
     Identify_pattern = Data_conversion(Identify_RX_2[cnt_I++], Identify_RX_2[cnt_I++])  //
     Identify_x = Data_conversion(Identify_RX_2[cnt_I++], Identify_RX_2[cnt_I++])        //
